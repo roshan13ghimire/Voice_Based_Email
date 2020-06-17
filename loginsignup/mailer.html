@@ -1,0 +1,82 @@
+<head>
+ <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/dist/css/adminlte.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/dev/AdminLTE/plugins/summernote/summernote-bs4.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body>
+<div class="col-md-9">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">Compose New Message</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+			
+                <div class="form-group">
+				<form action="PHPMailer/newsend.php" method="POST">
+                  <input id="speechToText" class="form-control" onclick="record()" name="to" placeholder="To:">
+				  				<script>
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+            recognition.onresult = function(event) {
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+         </script>
+                </div>
+                <div class="form-group">
+                  <input id="speechToText1" onclick="record1()" class="form-control" name="subject"placeholder="Subject:">
+				  				<script>
+        function record1() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+            recognition.onresult = function(event) {
+                document.getElementById('speechToText1').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+         </script>
+                </div>
+                <div class="form-group">
+                    <textarea id="speechToText2" name="body" class="form-control" onclick="record2()" placeholder="Speak Demo message" style="height: 300px " >
+                    </textarea>
+					                    				  				<script>
+        function record2() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+            recognition.onresult = function(event) {
+                document.getElementById('speechToText2').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+         </script>
+                </div>
+                <div class="form-group">
+                  <div class="btn btn-default btn-file">
+                    <i class="fas fa-paperclip"></i> Attachment
+                    <input type="file" name="attachment">
+                  </div>
+                  <p class="help-block">Max. 32MB</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="float-right">
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i>Send</button>
+                </div>
+                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
+				</form>
+              </div>
+              
+            </div>
+           <button type="submit" ><a href='logout.php'>Logout</button>
+          </div>
